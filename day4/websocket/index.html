@@ -7,7 +7,7 @@
         wio...
         <script>
             const ws = new WebSocket('wss://us.wio.seeed.io/v1/node/event');
-            const TOKEN = `トークンを指定`;
+            const TOKEN = ``;
 
             ws.onopen = () => {
                 ws.send(TOKEN);
@@ -16,7 +16,10 @@
 
             ws.onmessage = (evt) => {
                 const msg = JSON.parse(evt.data).msg;
-                if(msg.input_rise) alert('宅配がきたよ');
+                if(msg.input_rise){
+                    console.log(`-------------`);
+                    // alert('宅配がきたよ');
+                } 
                 console.log(evt.data)
             };
             </script>
