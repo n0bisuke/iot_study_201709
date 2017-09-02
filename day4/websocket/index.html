@@ -7,21 +7,21 @@
         wio...
         <script>
             const ws = new WebSocket('wss://us.wio.seeed.io/v1/node/event');
-            const TOKEN = ``;
+            const TOKEN = `b44993a4bb2fa10d4a73fa8a5f6237a1`;
 
             ws.onopen = () => {
                 ws.send(TOKEN);
                 console.log(`connect`);
-            };
+            }
 
             ws.onmessage = (evt) => {
                 const msg = JSON.parse(evt.data).msg;
                 if(msg.input_rise){
-                    console.log(`-------------`);
-                    // alert('宅配がきたよ');
-                } 
-                console.log(evt.data)
-            };
+                    console.log(`------${evt.data}-------`);
+                }else{
+                    console.log(evt.data);
+                }
+            }
             </script>
     </body>
 </html>
