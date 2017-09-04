@@ -4,7 +4,7 @@
 void setup()
 {
   Wire.begin();
-  Serial.begin(9600);
+  Serial.begin(115200);
   TSL2561.init();
 }
 
