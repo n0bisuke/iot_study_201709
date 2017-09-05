@@ -1,45 +1,34 @@
-#define WIO_DIGITAL 2
-#define PIN_ADC A0
-#define LED_PIN 13
-#define THRESHOLD 500 //閾値
-
-void setup() {
-  Serial.begin(115200);
-  pinMode(WIO_DIGITAL, OUTPUT);
+#include <Wire.h>
+#include "MMA7660.h"
+MMA7660 accelemeter;
+void setup()
+{
+	accelemeter.init();  
+	Serial.begin(115200);
 }
-
-// the loop function runs over and over again forever
-void loop() {
-
-  if(isSoundDetected()){//if it detects the moving people?
-    digitalWrite(LED_PIN, HIGH);
-    digitalWrite(WIO_DIGITAL, HIGH);
-    Serial.println("反応あり");
-  }else{
-    digitalWrite(LED_PIN, LOW);
-    digitalWrite(WIO_DIGITAL, LOW);
-    Serial.println("反応なし");
-  }
-
-  Serial.println(cal());
-  delay(100);
-}
-
-boolean isSoundDetected(){
-  if(cal() >= THRESHOLD){//閾値よりも高いかどうか
-    return true;//yes,return true
-  }else{
-    return false;//no,return false
-  }
-}
-
-int cal(){
-    long sum = 0;
-    
-    for(int i=0; i<32; i++){
-      sum += analogRead(PIN_ADC);
-    }
-    sum >>= 5;
-
-    return sum;
+void loop()
+{
+	int8_t x;
+	int8_t y;
+	int8_t z;
+	float ax,ay,az;
+	accelemeter.getXYZ(&x,&y,&z);
+	
+	Serial.print("x = ");
+    Serial.println(x); 
+    Serial.print("y = ");
+    Serial.println(y);   
+    Serial.print("z = ");
+    Serial.println(z);
+	
+	accelemeter.getAcceleration(&ax,&ay,&az);
+    Serial.println("accleration of X/Y/Z: ");
+	Serial.print(ax);
+	Serial.println(" g");
+	Serial.print(ay);
+	Serial.println(" g");
+	Serial.print(az);
+	Serial.println(" g");
+	Serial.println("*************");
+	delay(500);
 }
