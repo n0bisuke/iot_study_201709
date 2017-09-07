@@ -1,6 +1,6 @@
 'use strict';
 
-const TOKEN = `トークンを指定`;
+const TOKEN = `b71bde51ca76124e888f700369b1236e`;
 const URL = `http://cors-allow.azurewebsites.net/?url=https://us.wio.seeed.io/v1/node/GroveDigitalLightI2C0/lux?access_token=${TOKEN}`;
 const $bulb = document.querySelector('.bulb');
 const INTERVAL_TIME = 3000;
@@ -20,7 +20,8 @@ const removeClass = () => {
 const changeOpacity = async () => {
    const res = await axios.get(URL);
    const light = res.data.lux;
-   const opacity = light / 1000;
+   let opacity = light / 1000;
+   if(opacity == NaN) opacity = 0.9
    $bulb.style.opacity = opacity;
    if(opacity <= 0.5) {
        removeClass();
