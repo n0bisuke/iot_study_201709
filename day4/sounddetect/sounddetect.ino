@@ -11,16 +11,16 @@ void setup() {
 
 void loop() {
   val = cal();
-  Serial.print(val);
   if(val >= THRESHOLD){
     digitalWrite(WIO_DIGITAL, HIGH);
-    Serial.println(": 反応あり");
+    Serial.print("反応あり:");
   }else{
     digitalWrite(WIO_DIGITAL, LOW);
-    Serial.println(": 反応なし");
+    Serial.print("反応なし:");
   }
+  Serial.println(val);
 
-  delay(100);
+  delay(10);
 }
 
 int cal(){
