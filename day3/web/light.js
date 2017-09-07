@@ -1,7 +1,7 @@
 'use strict';
 
-const TOKEN = `トークンを指定`;
-const URL = `http://cors-allow.azurewebsites.net/?url=https://us.wio.seeed.io/v1/node/GroveDigitalLightI2C1/lux?access_token=${TOKEN}`;
+const TOKEN = `トークンを保存`;
+const URL = `http://cors-allow.azurewebsites.net/?url=https://us.wio.seeed.io/v1/node/GroveDigitalLightI2C0/lux?access_token=${TOKEN}`;
 const $bulb = document.querySelector('.bulb');
 const INTERVAL_TIME = 3000;
 
