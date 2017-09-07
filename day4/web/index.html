@@ -7,7 +7,7 @@
         WioNodeとWebSocketで接続します。
         <script>
             const ws = new WebSocket('wss://us.wio.seeed.io/v1/node/event');
-            const TOKEN = `ddd252ab790c2bd4dcb7b75782d74f2e`;
+            const TOKEN = `トークンを指定`;
 
             ws.onopen = () => {
                 ws.send(TOKEN);

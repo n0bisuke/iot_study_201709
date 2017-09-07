@@ -5,8 +5,8 @@ const axios = require('axios');
 const qs = require('querystring');
 const BASE_URL = 'https://notify-api.line.me';
 const PATH =  '/api/notify';
-const LINE_TOKEN = `zImzhPHd4qLYgryNzhMx6rpLFNHVqtIi7B6BOCqPSYW`; //ここにLINE Notifyのトークンを指定
-const WIO_TOKEN = `ddd252ab790c2bd4dcb7b75782d74f2e`; //ここにWioNodeのトークンを指定
+const LINE_TOKEN = `トークンを指定`; //ここにLINE Notifyのトークンを指定
+const WIO_TOKEN = `トークンを指定`; //ここにWioNodeのトークンを指定
 const MESSAGE = `不在通知があった模様です。`;
 const ws = new WebSocket('wss://us.wio.seeed.io/v1/node/event');
 
